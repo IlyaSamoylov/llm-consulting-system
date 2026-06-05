@@ -23,5 +23,5 @@ dependencies = [
   "asyncpg>=0.31.0",
 ]
 
-[tool.uv]
+[dependency-groups.dev]
 dev-dependencies = []
