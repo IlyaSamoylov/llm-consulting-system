@@ -7,9 +7,8 @@ class Database:
 		self.url = url or self._build_postgres_url()
 
 		self.engine = create_async_engine(
-			settings.db_url,
+			self.url,
 		    echo=settings.AUTH_DEBUG,
-		    future=True,
 		    pool_pre_ping=True
 		)
 
