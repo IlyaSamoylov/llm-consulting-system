@@ -24,3 +24,7 @@ class InvalidCredentials(BaseHTTPException):
 class UserNotFoundError(BaseHTTPException):
 	def __init__(self, detail: str = "Пользователь не найден"):
 		super().__init__(status.HTTP_404_NOT_FOUND, detail)
+
+class PermissionDeniedError(BaseHTTPException):
+	def __init__(self, detail: str = "Permission denied") -> None:
+		super().__init__(status.HTTP_403_FORBIDDEN, detail)
