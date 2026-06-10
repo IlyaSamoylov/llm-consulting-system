@@ -1,6 +1,9 @@
-def main():
-    print("Hello from bot-service!")
+from fastapi import FastAPI
 
+from app.core.config import settings
 
-if __name__ == "__main__":
-    main()
+app = FastAPI(title=settings.APP_NAME)
+
+@app.get("/health", tags=["system"])
+async def health() -> dict[str, str]:
+    return {"service": settings.APP_NAME, "status": "ok"}
