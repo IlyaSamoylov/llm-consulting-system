@@ -6,7 +6,7 @@ from app.bot.handlers import router
 
 def create_dispatcher() -> tuple[Bot, Dispatcher]:
 	"""Сборка и регистрация обработчиков"""
-	bot = Bot(token=settings.TELEGRAM_BOT_TOKEN)
+	bot = Bot(token=settings.BOT_TOKEN)
 	dispatcher = Dispatcher()
 	dispatcher.include_router(router)
 	return bot, dispatcher

@@ -16,11 +16,11 @@ def llm_request(tg_chat_id: int, prompt: str) -> str | None:
 	except OpenRouterError as exc:
 		llm_answer = f"Ошибка LLM: {exc}"
 
-	if not settings.TELEGRAM_BOT_TOKEN:
+	if not settings.BOT_TOKEN:
 		logger.warning("Токен бота телеграм не задан, пропускаю")
 		return
 
-	url = f"https://api.telegram.org/bot{settings.TELEGRAM_BOT_TOKEN}/sendMessage"
+	url = f"https://api.telegram.org/bot{settings.BOT_TOKEN}/sendMessage"
 	payload = {"chat_id": tg_chat_id, "text": llm_answer}
 
 	try:

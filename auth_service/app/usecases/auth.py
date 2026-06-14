@@ -4,7 +4,7 @@ from app.db.models import User
 from app.core.security import hash_password, verify_password, create_access_token
 from app.repositories.users import UserRepository
 from app.schemas.auth import RegisterRequest, LoginRequest
-from app.core.exceptions import UserAlreadyExist, InvalidCredentials, UserNotFoundError
+from app.core.exceptions import UserAlreadyExistsError, InvalidCredentialsError, UserNotFoundError
 
 class AuthUsecase:
 	def __init__(self, users_repo: UserRepository):
@@ -13,22 +13,22 @@ class AuthUsecase:
 	async def register(self, data: RegisterRequest):
 		existing = await self.users_repo.get_by_email(str(data.email))
 		if existing:
-			raise UserAlreadyExist()
+			raise UserAlreadyExistsError()
 
 		pwd_hash = hash_password(data.password)
 		try:
 			return await self.users_repo.create(email=str(data.email), pwd_hash=pwd_hash)
 		except IntegrityError as exc:
 			await self.users_repo.rollback()
-			raise UserAlreadyExist() from exc
+			raise UserAlreadyExistsError() from exc
 
 	async def login(self, data: LoginRequest) -> str:
 		user = await self.users_repo.get_by_email(str(data.email))
 		if not user:
-			raise InvalidCredentials()
+			raise InvalidCredentialsError()
 
 		if not verify_password(data.password, user.password_hash):
-			raise InvalidCredentials()
+			raise InvalidCredentialsError()
 
 		return create_access_token(sub=str(user.id), role=user.role)
 

@@ -30,7 +30,7 @@ def create_access_token(*, sub: str, role: str) -> str:
 
 	return jwt.encode(payload, settings.JWT_SECRET, settings.JWT_ALG)
 
-def decode_access_token(token: str) -> dict[str, str]:
+def decode_token(token: str) -> dict[str, str]:
 	"""Декодирование токена"""
 	try:
 		payload = jwt.decode(token, settings.JWT_SECRET, algorithms=[settings.JWT_ALG])

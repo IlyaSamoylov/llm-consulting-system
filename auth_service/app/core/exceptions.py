@@ -13,11 +13,11 @@ class TokenExpiredError(BaseHTTPException):
 	def __init__(self, detail: str = "Истекший JWT токен"):
 		super().__init__(status.HTTP_401_UNAUTHORIZED, detail)
 
-class UserAlreadyExist(BaseHTTPException):
+class UserAlreadyExistsError(BaseHTTPException):
 	def __init__(self, detail: str = "Пользователь с таким email уже существует"):
 		super().__init__(status.HTTP_409_CONFLICT, detail)
 
-class InvalidCredentials(BaseHTTPException):
+class InvalidCredentialsError(BaseHTTPException):
 	def __init__(self, detail: str ="Неверные учетные данные"):
 		super().__init__(status.HTTP_401_UNAUTHORIZED, detail)
 

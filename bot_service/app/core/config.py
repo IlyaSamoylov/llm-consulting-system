@@ -6,7 +6,7 @@ class Settings(BaseSettings):
 	APP_NAME: str = "bot-service"
 	ENV: str = "local"
 
-	TELEGRAM_BOT_TOKEN: str
+	BOT_TOKEN: str
 
 	JWT_SECRET: str
 	JWT_ALG: str = "HS256"

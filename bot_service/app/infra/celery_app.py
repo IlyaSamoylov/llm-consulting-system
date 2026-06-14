@@ -15,5 +15,3 @@ celery_app.conf.update(
 	accept_content=["json"],
 	task_default_queue="llm"
 )
-
-celery_app.autodiscover_tasks(["app.tasks"])
