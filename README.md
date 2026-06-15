@@ -100,8 +100,8 @@ Bot Service — это Telegram бот, связывающийся с OpenRouter
 ## Установка и запуск
 ### 1 Клонирование репозитория
 ```cmd
-git clone https://github.com/IlyaSamoylov/citizen-request-classifier
-cd citizen-request-classifier
+git clone https://github.com/IlyaSamoylov/llm-consulting-system
+cd llm-consulting-system
 ```
 
 ### 2 Переменные среды
@@ -152,6 +152,7 @@ docker compose up --build -d
 
 ### Регистрация
 ![register1.jpg](docs/register1.jpg)
+
 ![register2.jpg](docs/register2.jpg)
 
 ### Авторизация
@@ -159,6 +160,8 @@ docker compose up --build -d
 
 ![login2.jpg](docs/login2.jpg)
 
+### Бот
+![bot_screen.jpg](docs/bot_screen.jpg)
 ### RabbitMQ
 ![rabbitmq.jpg](docs/rabbitmq.jpg)
 
